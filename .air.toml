@@ -1,0 +1,40 @@
+#:schema https://json.schemastore.org/any.json
+# Air — https://github.com/air-verse/air
+# Example reference: https://github.com/air-verse/air/blob/master/air_example.toml
+
+root = "."
+tmp_dir = "tmp"
+
+[build]
+cmd = "go build -o ./tmp/main ./src/app"
+bin = "tmp/main"
+entrypoint = ["./tmp/main"]
+include_ext = ["go", "tpl", "tmpl", "html"]
+exclude_dir = ["assets", "tmp", "vendor", "frontend/node_modules"]
+exclude_regex = ["_test\\.go"]
+exclude_unchanged = true
+delay = 300
+stop_on_error = true
+send_interrupt = false
+poll = false
+
+[log]
+time = false
+main_only = false
+silent = false
+
+[color]
+main = "magenta"
+watcher = "cyan"
+build = "yellow"
+runner = "green"
+
+[misc]
+clean_on_exit = true
+
+[screen]
+clear_on_rebuild = true
+keep_scroll = true
+
+[proxy]
+enabled = false
